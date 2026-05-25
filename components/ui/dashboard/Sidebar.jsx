@@ -14,6 +14,7 @@ export default function Sidebar({className}) {
       {/* Logo */}
       <Link href={"/overview"} className="md:block hidden">
         <div className="px-9 py-10">
+          
           {/* Small Logo */}
           <img
             src="/images/logo-small.svg"
@@ -47,10 +48,10 @@ export default function Sidebar({className}) {
       </div>
 
       {/* Toggle Button */}
-      <button className="sidebar-item md:px-8 md:py-4 pt-2 pb-3 md:block hidden" onClick={() => { collapsed ? setCollapsed(false) : setCollapsed(true) }}>
-        <ArrowFatLinesRightIcon weight="fill" className={`size-6 shrink-0 transition-opacity duration-300 absolute ${collapsed ? "opacity-100" : "opacity-0"}`} aria-label="open sidebar" />
+      <button className="sidebar-item md:px-8 md:py-4 pt-2 pb-3 md:block hidden" onClick={() => { collapsed ? setCollapsed(false) : setCollapsed(true) }} aria-label={collapsed? "open sidebar": "close sidebar"}>
+        <ArrowFatLinesRightIcon weight="fill" className={`size-6 shrink-0 transition-opacity duration-300 absolute ${collapsed ? "opacity-100" : "opacity-0"}`}  aria-hidden="true"/>
         <div className={`flex gap-4 transition-opacity duration-300 ${!collapsed ? "opacity-100 scale-100 absolute" : "opacity-0 scale-95"}`}>
-          <ArrowFatLinesLeftIcon weight="fill" className="size-6 shrink-0" aria-label="close sidebar" />
+          <ArrowFatLinesLeftIcon weight="fill" className="size-6 shrink-0" aria-hidden="true"/>
           <div className={`
     transition-all duration-200 whitespace-nowrap
     ${collapsed
