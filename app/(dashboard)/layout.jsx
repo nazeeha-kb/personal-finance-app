@@ -1,10 +1,5 @@
-import Sidebar from "@/components/ui/dashboard/Sidebar";
+import AppShell from "@/components/layout/AppShell";
 
-export default function layout({ children }) {
-  return (
-    <div className="relative">
-      <Sidebar/>
-      {children}
-    </div>
-  );
+export default function Layout({ children }) {
+  return <AppShell>{children}</AppShell>;
 }

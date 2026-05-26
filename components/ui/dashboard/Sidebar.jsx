@@ -4,9 +4,13 @@ import Link from "next/link";
 import SidebarItem from "./SidebarItem";
 import { NavLinks } from "./navLinks";
 import { ArrowFatLinesRightIcon, ArrowFatLinesLeftIcon } from "@phosphor-icons/react/dist/ssr";
+import { useUIStore } from "@/components/layout/ui-store";
+import { useStore } from "zustand";
 
-export default function Sidebar({className}) {
-  const [collapsed, setCollapsed] = useState(true)
+export default function Sidebar({ className }) {
+  const collapsed = useUIStore((s) => s.collapsed)
+  const toggleSidebar = useUIStore((s) => s.toggleSidebar)
+  // const [collapsed, setCollapsed] = useState(true)
 
   return (
     <div className={`${className} fixed md:left-0 md:top-0 bottom-0 md:h-screen h-auto w-screen font-semibold bg-black md:rounded-r-2xl bg-grey-900 md:pr-2 md:pl-0 flex md:flex-col flex-row gap-6 transition-all md:pt-0 pt-2 sm:px-10 px-4  duration-200 ease-in-out  ${collapsed ? "md:w-25" : "md:w-64 pr-4"}`}>
@@ -14,7 +18,7 @@ export default function Sidebar({className}) {
       {/* Logo */}
       <Link href={"/overview"} className="md:block hidden">
         <div className="px-9 py-10">
-          
+
           {/* Small Logo */}
           <img
             src="/images/logo-small.svg"
@@ -48,10 +52,10 @@ export default function Sidebar({className}) {
       </div>
 
       {/* Toggle Button */}
-      <button className="sidebar-item md:px-8 md:py-4 pt-2 pb-3 md:block hidden" onClick={() => { collapsed ? setCollapsed(false) : setCollapsed(true) }} aria-label={collapsed? "open sidebar": "close sidebar"}>
-        <ArrowFatLinesRightIcon weight="fill" className={`size-6 shrink-0 transition-opacity duration-300 absolute ${collapsed ? "opacity-100" : "opacity-0"}`}  aria-hidden="true"/>
+      <button className="sidebar-item md:px-8 md:py-4 pt-2 pb-3 md:block hidden" onClick={toggleSidebar} aria-label={collapsed ? "open sidebar" : "close sidebar"}>
+        <ArrowFatLinesRightIcon weight="fill" className={`size-6 shrink-0 transition-opacity duration-300 absolute ${collapsed ? "opacity-100" : "opacity-0"}`} aria-hidden="true" />
         <div className={`flex gap-4 transition-opacity duration-300 ${!collapsed ? "opacity-100 scale-100 absolute" : "opacity-0 scale-95"}`}>
-          <ArrowFatLinesLeftIcon weight="fill" className="size-6 shrink-0" aria-hidden="true"/>
+          <ArrowFatLinesLeftIcon weight="fill" className="size-6 shrink-0" aria-hidden="true" />
           <div className={`
     transition-all duration-200 whitespace-nowrap
     ${collapsed
