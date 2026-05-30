@@ -26,7 +26,7 @@ export default function SidebarItem({ item, collapsed }) {
         <span className={`sm:block hidden
     transition-all duration-200 whitespace-nowrap
     ${collapsed
-            ? "opacity-0 w-0 overflow-hidden"
+            ? "md:opacity-0 md:w-0 overflow-hidden"
             : "opacity-100 w-auto"}
   `}>{item.label}</span>
       </div>

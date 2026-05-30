@@ -12,7 +12,7 @@ export default function AppShell({ children }) {
 
             <main
                 className={`
-          transition-all duration-300
+          transition-all duration-300 md:mb-0 sm:mb-[81.6px] mb-[49.6px]
           ${collapsed ? "md:ml-25" : "md:ml-64"}
         `}
             >

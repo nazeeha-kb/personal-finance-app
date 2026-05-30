@@ -13,7 +13,7 @@ export default function Sidebar({ className }) {
   // const [collapsed, setCollapsed] = useState(true)
 
   return (
-    <div className={`${className} fixed md:left-0 md:top-0 bottom-0 md:h-screen h-auto w-screen font-semibold bg-black md:rounded-r-2xl bg-grey-900 md:pr-2 md:pl-0 flex md:flex-col flex-row gap-6 transition-all md:pt-0 pt-2 sm:px-10 px-4  duration-200 ease-in-out  ${collapsed ? "md:w-25" : "md:w-64 pr-4"}`}>
+    <div className={`${className} fixed md:left-0 md:top-0 bottom-0 md:h-screen sm:h-[81.6px] h-[49.6px] w-screen font-semibold bg-black md:rounded-r-2xl bg-grey-900 md:pr-2 md:pl-0 flex md:flex-col flex-row gap-6 transition-all md:pt-0 pt-2 sm:px-10 px-4  duration-200 ease-in-out  ${collapsed ? "md:w-25" : "md:w-64 pr-4"}`}>
 
       {/* Logo */}
       <Link href={"/overview"} className="md:block hidden">
