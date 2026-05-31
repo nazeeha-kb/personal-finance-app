@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function SignUpForm() {
     return (
-        <article className="bg-white md:w-xl sm:w-[80vw] w-[90vw] p-8 rounded-xl">
+        <article className="w-full max-w-xl p-8 rounded-xl bg-white mx-5">
             <form action="" className="flex flex-col gap-8">
                 <h1 className="text-2xl font-bold">Sign In</h1>
                 <div className="flex flex-col gap-4">

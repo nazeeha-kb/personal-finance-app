@@ -14,7 +14,7 @@ export default function AuthLayout({ children }) {
                 </article>
                 <Link href="/"><Image src="/images/logo-large.svg" width={100} height={100} className="lg:hidden block" alt="logo" /></Link>
             </section>
-            <section className="flex items-center justify-center w-full h-full">
+            <section className="flex flex-1 items-center justify-center w-full h-full">
                 {children}
             </section>
         </div>
