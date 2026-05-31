@@ -1,12 +1,12 @@
 "use client"
 
 import Input from "@/components/ui/Input"
-import { CurrencyDollarIcon } from "@phosphor-icons/react"
+import SignInForm from "@/components/forms/auth/SignInForm"
 
 export default function SignInPage() {
     return (
-        <div>Sign in
-            <Input type="text" placeholder="Placeholder" label="Basic field"/>
+        <div>
+            <SignInForm />
         </div>
     )
 }

@@ -1,5 +1,9 @@
-export default function SignUpPage(){
+"use client"
+
+import SignUpForm from "@/components/forms/auth/SignUpForm"
+
+export default function SignUpPage() {
     return (
-        <div>Sign in</div>
+        <div><SignUpForm /></div>
     )
 }
