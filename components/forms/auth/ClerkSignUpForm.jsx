@@ -50,25 +50,27 @@ export default function ClerkSignUpForm() {
             password: passwordError
         })
 
-        if (!emailError && !passwordError) {
-            console.log("signed in")
+        if (nameError || emailError || passwordError) {
+            return;
+        }
+        else {
+            // Create and verification
+
+            try {
+                await signUp.create({
+                    firstName: name,
+                    emailAddress: email,
+                    password
+                })
+
+                await signUp.verifications.sendEmailCode()
+                setPendingVerification(true);
+            } catch (error) {
+                console.log(JSON.stringify(error, null, 2))
+                setError({ formError: error.errors[0].message });
+            }
         }
 
-        // Create and verification
-
-        try {
-            await signUp.create({
-                firstName: name,
-                emailAddress: email,
-                password
-            })
-
-            await signUp.verifications.sendEmailCode()
-            setPendingVerification(true);
-        } catch (error) {
-            console.log(JSON.stringify(error, null, 2))
-            setError({ formError: error.errors[0].message });
-        }
     }
 
     // Validation
@@ -120,9 +122,12 @@ export default function ClerkSignUpForm() {
                         <Input type="email" id="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} error={error.email} />
                         <Input type="password" id="password" label="Create Password" rightIcon={EyeIcon} iconWeight="fill" helperText="Passwords must be at least 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} error={error.password} />
                     </div>
+                    {/* Clerk's CAPTCHA widget */}
+                    <div id="clerk-captcha" />
                     <Button type="submit" text="Sign Up" variant="primary" className="w-full" />
                     <p className="self-center text-grey-500">Already have an account?
-                        <Link href="/signin" className="text-grey-900 font-semibold underline">Sign In</Link></p>
+                        <Link href="/signin" className="pl-1 text-grey-900 font-semibold underline">Sign In</Link>
+                    </p>
                 </form>
             ) : (
                 <VerificationForm error={error.formError} />

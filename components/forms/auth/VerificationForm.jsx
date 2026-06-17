@@ -5,11 +5,15 @@ import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useSignUp, useClerk } from "@clerk/nextjs";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 
 export default function VerificationForm({ error }) {
     const [code, setCode] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
+
+    const router = useRouter()
     const { setActive } = useClerk()
     const { signUp } = useSignUp()
 
@@ -17,29 +21,28 @@ export default function VerificationForm({ error }) {
     async function onPressVerify(e) {
         e.preventDefault()
 
-        if (!signUp) {
-            return;
-        }
+        setIsLoading(true)
+        if (isLoading) return
 
         try {
-            // an attempt to signup has been made with this code
-            const completeSignup = await signUp.verifications.verifyEmailCode({ code })
+            signUp.verifications.verifyEmailCode({
+                code
+            })
 
-            if (completeSignup.status !== "complete") {
-                console.log(JSON.stringify(completeSignup, null, 2))
-            }
-            if (completeSignup.status === "complete") {
-                // create a session and sign user up.
+            if (signUp.status === "complete") {
                 await setActive({
-                    session: result.createdSessionId,
-                });
+                    session: signUp.createdSessionId
+                })
 
                 router.push("/overview")
+                console.log("Pushed to /overview")
             }
 
-        } catch (error) {
-            console.log(JSON.stringify(error, null, 2))
-            setError(error.errors[0].message)
+        } catch (err) {
+            console.log("VERIFY ERROR")
+            console.log(err)
+        } finally {
+            setIsLoading(false)
         }
     }
 

@@ -1,8 +1,7 @@
 import { Geist, Geist_Mono, Public_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
-// import Header from "@/components/ui/Header2";
-// import Header from "@/components/ui/Header";
+import Header from "@/components/ui/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +31,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col font-sans text-grey-900">
         <ClerkProvider>
-          {/* <Header /> */}
+          <Header />
           {children}
         </ClerkProvider>
       </body>
