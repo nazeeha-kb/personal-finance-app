@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Input from "@/components/ui/Input"
-import { EyeIcon } from "@phosphor-icons/react"
 import Button from "@/components/ui/Button"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -17,7 +16,6 @@ export default function SignInForm() {
         email: "",
         password: ""
     })
-    const [showPassword, setShowPassword] = useState("")
 
     const { signIn } = useSignIn()
     const { setActive } = useClerk()
@@ -90,7 +88,7 @@ export default function SignInForm() {
                 <h1 className="text-2xl font-bold">Sign In</h1>
                 <div className="flex flex-col gap-4">
                     <Input type="email" id="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} error={error.email} />
-                    <Input type="password" id="password" label="Password" rightIcon={EyeIcon} iconWeight={"fill"} value={password} onChange={(e) => setPassword(e.target.value)} error={error.password} />
+                    <Input type="password" id="password" label="Password" iconWeight={"fill"} value={password} onChange={(e) => setPassword(e.target.value)} error={error.password} />
                 </div>
                 <Button type="submit" text="Sign in" variant="primary" className="w-full" />
                 <p className="self-center text-grey-500 flex gap-1">

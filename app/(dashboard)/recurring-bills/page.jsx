@@ -1,3 +1,10 @@
+import PageHeader from "@/components/ui/PageHeader"
+
+
 export default function RecurringBillsPage() {
-    <div>Recurring Bills</div>
+   return (
+    <div>
+        <PageHeader title="Recurring Bills"/>
+    </div>
+   )
 }

@@ -7,11 +7,16 @@ const variants = {
     destroy: "bg-red text-white hover:bg-red/80 focus:bg-red/80 p-4 rounded-[8px] font-semibold",
 }
 
-export default function Button({ variant, text, onClick, className, type }) {
+export default function Button({ variant, text, onClick, className, type, leftIcon }) {
+
+    const LeftIcon = leftIcon;
 
 
     return (
-        <button className={`${variants[variant]} ${className} transform-all duration-150`} onClick={onClick} type={type}>
+        <button className={`${variants[variant]} ${className} transform-all duration-150 ${leftIcon ? "flex items-center gap-2" : ""}`} onClick={onClick} type={type}>
+            {leftIcon && (
+                <div><LeftIcon weight="bold" /></div>
+            )}
             <span>{text || "Placeholder"}</span>
             {variant === "tertiary" ? <span>
                 <CaretDownIcon weight="fill" className={`-rotate-90 transition-transform duration-300`} />

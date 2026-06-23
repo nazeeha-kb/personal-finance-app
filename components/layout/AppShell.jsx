@@ -3,11 +3,11 @@
 import Sidebar from "@/components/ui/dashboard/Sidebar";
 import { useUIStore } from "./ui-store";
 
-export default function AppShell({ children }) {
+export default function AppShell({ children, className }) {
     const collapsed = useUIStore((s) => s.collapsed);
 
     return (
-        <div>
+        <div className={`${className}`}>
             <Sidebar />
 
             <main

@@ -1,7 +1,6 @@
 "use client"
 
 import Input from "@/components/ui/Input"
-import { EyeIcon } from "@phosphor-icons/react"
 import Button from "@/components/ui/Button"
 import Link from "next/link"
 import { useState } from "react"
@@ -119,7 +118,7 @@ export default function SignUpForm() {
                     <div className="flex flex-col gap-4">
                         <Input type="text" id="name" label="Name" value={name} onChange={(e) => setName(e.target.value)} error={error.name} />
                         <Input type="email" id="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} error={error.email} />
-                        <Input type="password" id="password" label="Create Password" rightIcon={EyeIcon} iconWeight="fill" helperText="Passwords must be at least 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} error={error.password} />
+                        <Input type="password" id="password" label="Create Password" iconWeight="fill" helperText="Passwords must be at least 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} error={error.password} />
                     </div>
                     {/* Clerk's CAPTCHA widget */}
                     <div id="clerk-captcha" />
