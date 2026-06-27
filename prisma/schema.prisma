@@ -19,11 +19,11 @@ model User {
   email     String   @unique
   createdAt DateTime @default(now())
   
-  budgets   Budgets[]
-  pots      Pots[]
+  budgets   Budget[]
+  pots      Pot[]
 }
 
-model Budgets {
+model Budget {
   id        String   @id @default(cuid())
   userId    String
   user      User @relation(fields: [userId], references: [id])  
@@ -32,7 +32,7 @@ model Budgets {
   color     String
 }
 
-model Pots {
+model Pot {
   id        String   @id @default(cuid())
   userId    String
   user      User @relation(fields: [userId], references: [id])  
