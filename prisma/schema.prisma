@@ -18,4 +18,25 @@ model User {
   clerkId   String   @unique
   email     String   @unique
   createdAt DateTime @default(now())
+  
+  budgets   Budgets[]
+  pots      Pots[]
+}
+
+model Budgets {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User @relation(fields: [userId], references: [id])  
+  category  String
+  maximum   Int      @default(0)
+  color     String
+}
+
+model Pots {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User @relation(fields: [userId], references: [id])  
+  name      String
+  target    Int      @default(0)
+  color     String
 }
