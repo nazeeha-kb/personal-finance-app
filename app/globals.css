@@ -44,3 +44,11 @@
     @apply text-grey-300 hover:text-white transition-colors duration-400 flex md:flex-row flex-col md:gap-4 gap-2;
   }
 }
+
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
