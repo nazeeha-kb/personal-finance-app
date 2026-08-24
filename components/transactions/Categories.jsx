@@ -57,7 +57,7 @@ export default function Categories({ onClick, currCategory }) {
                     onClick={() => toggleDropDown()}
                     type="button"
                     aria-label="Filter by category"
-                    className="flex items-center justify-between gap-3 rounded-xl border border-[#cfc9c0] bg-[#f7f5f2] px-3 py-2.5 text-sm font-medium text-grey-900 shadow-sm sm:min-w-[170px]"
+                    className="flex items-center justify-between gap-3 rounded-xl border border-gray-800 px-3 py-2.5 text-sm font-medium text-grey-900 shadow-sm sm:min-w-[170px]"
                 >
                     <span className="flex items-center gap-1 text-[#4b4b4b]">
                         <span>{currCategory}</span>

@@ -8,7 +8,7 @@ export default function AppShell({ children, className }) {
 
     return (
         <div className={`${className}`}>
-            <Sidebar />
+            <Sidebar className="z-100" />
 
             <main
                 className={`

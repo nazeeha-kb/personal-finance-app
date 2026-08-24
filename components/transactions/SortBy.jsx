@@ -47,19 +47,19 @@ export default function SortBy({ onClick, currSort }) {
     return (
         <section className="relative w-fit" ref={dropdownRef}>
             <div className="flex items-center gap-3">
-                <span className="text-sm">Category</span>
+                <span className="text-sm">Sort By</span>
                 <button
                     onClick={() => toggleDropDown()}
                     type="button"
                     aria-label="Sorts"
-                    className="flex items-center justify-between gap-3 rounded-xl border border-[#cfc9c0] bg-[#f7f5f2] px-3 py-2.5 text-sm font-medium text-grey-900 shadow-sm sm:min-w-[170px]"
+                    className="flex items-center justify-between gap-3 rounded-xl border border-gray-800 px-3 py-2.5 text-sm font-medium text-grey-900 shadow-sm sm:min-w-[170px]"
                 >
                     <span className="flex items-center gap-1 text-[#4b4b4b]">
                         <span>{currSort}</span>
                         <CaretDownIcon weight="fill" className="size-4" />
                     </span>
                 </button>
-            </div>
+            </div> 
             <article className={`flex flex-col absolute bg-white shadow-2xl rounded-lg w-40 h-60 overflow-auto scrollbar-thin overflow-x-hidden translate-x-20 px-4 mt-2 scrollbar-hide transition-opacity duration-500
                 ${dropDownOpen ? "opacity-100 z-10" : "opacity-0 -z-10"}
                 `} aria-hidden={!dropDownOpen}>

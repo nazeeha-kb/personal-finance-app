@@ -33,21 +33,58 @@ export default function TransactionsTable() {
 
     // Matches Category
     if (category === "all transactions") {
-
       return matchesSearch;
-
     }
     const matchesCategory = transaction.category.toLowerCase() == category;
+
+    // Sort
+
+    // latest, oldest, atoz, ztoa, highest 
+
     return matchesSearch && matchesCategory;
   });
+
+  // Sorting
+  const sortTransactions = (transactions, sort) => {
+    return [...transactions].sort((a, b) => {
+      switch (sort) {
+        case "latest":
+          return new Date(b.date) - new Date(a.date);
+
+        case "oldest":
+          return new Date(a.date) - new Date(b.date);
+
+        case "a to z":
+          return a.name.localeCompare(b.name);
+
+        case "z to a":
+          return b.name.localeCompare(a.name);
+
+        case "highest":
+          return b.amount - a.amount;
+
+        case "lowest":
+          return a.amount - b.amount;
+
+        default:
+          return 0;
+      }
+    });
+  };
+
+  const sortedTransactions = sortTransactions(
+    filteredTransactions,
+    sort
+  );
 
   // get current transactions
   const indexOfLastTransaction = currentPage * transactionPerPage
   const indexOfFirstTransaction = indexOfLastTransaction - transactionPerPage;
-  const currentTransactions = filteredTransactions.slice(
+  const currentTransactions = sortedTransactions.slice(
     indexOfFirstTransaction,
     indexOfLastTransaction
   )
+
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
@@ -73,17 +110,19 @@ export default function TransactionsTable() {
   };
 
   return (
-    <section className="rounded-[18px] border-[3px] border-[#77bfd9] bg-[#f5f5f3] p-3 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.02)] sm:p-4">
-      <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <section className="rounded-[18px] bg-white p-3  sm:p-4">
+      <div className="mb-4 mt-2 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <Search onChange={(e) => setSearch(e.target.value)} value={search} />
-          <SortBy onClick={handleSortChagne} currSort={toTitleCase(sort)} />
         </div>
-        <Categories onClick={handleCategoryChagne} currCategory={toTitleCase(category)} />
+        <div className="flex gap-6">
+          <SortBy onClick={handleSortChagne} currSort={toTitleCase(sort)} />
+          <Categories onClick={handleCategoryChagne} currCategory={toTitleCase(category)} />
+        </div>
       </div>
 
-      <div className="overflow-hidden rounded-[12px] border border-[#d6d0cb] bg-[#f0f0ee]">
-        <div className="grid grid-cols-[1.8fr_0.9fr_0.8fr_0.6fr] items-center border-b border-[#d6d0cb] bg-[#f3f1ef] px-3 py-3 text-xs font-semibold uppercase tracking-[0.04em] text-[#6c6c6c] sm:px-4">
+      <div className="overflow-hidden py-4 border-b border-[#d6d0cb]">
+        <div className="grid grid-cols-[1.8fr_0.9fr_0.8fr_0.6fr] items-center border-b border-[#d6d0cb] px-3 py-3 text-xs font-semibold uppercase tracking-[0.04em] text-[#6c6c6c] sm:px-4">
           <span>Recipient / Sender</span>
           <span>Category</span>
           <span>Date</span>
