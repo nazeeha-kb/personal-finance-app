@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon } from "@phosphor-icons/react"
 
 export default function Search({ value, onChange }) {
     return (
-        <label className="flex w-full items-center gap-3 rounded-xl border border-gray-500 px-3 py-2.5 text-sm text-grey-500 shadow-sm sm:w-[270px]">
+        <label className="flex w-full items-center gap-3 rounded-xl border border-gray-500 px-3 py-2.5 text-sm text-grey-500 shadow-sm lg:w-80 md:w-50 sm:w-40">
             <input
                 type="text"
                 placeholder="Search transaction..."

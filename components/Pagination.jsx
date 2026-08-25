@@ -1,6 +1,6 @@
 import {
-    ArrowLeftIcon,
-    ArrowRightIcon
+    CaretLeftIcon,
+    CaretRightIcon
 } from "@phosphor-icons/react";
 
 export default function Pagination({ itemPerPage, totalItems, paginate, currPage }) {
@@ -10,14 +10,14 @@ export default function Pagination({ itemPerPage, totalItems, paginate, currPage
     }
 
     return (
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex gap-3 sm:items-center justify-between">
             <button
                 type="button"
                 className="flex items-center gap-2 rounded-xl border border-[#d9d4ce] bg-[#f7f5f2] px-3 py-2 text-sm font-medium text-grey-900"
                 onClick={() => paginate(currPage - 1)}
             >
-                <ArrowLeftIcon weight="bold" className="size-4" />
-                <span>Prev</span>
+                <CaretLeftIcon weight="fill" className="size-4" />
+                <span className="sm:block hidden">Prev</span>
             </button>
 
             <ul className="flex items-center justify-center gap-2">
@@ -45,8 +45,8 @@ export default function Pagination({ itemPerPage, totalItems, paginate, currPage
                 onClick={() => paginate(currPage + 1)}
 
             >
-                <span>Next</span>
-                <ArrowRightIcon weight="bold" className="size-4" />
+                <span className="sm:block hidden">Next</span>
+                <CaretRightIcon weight="fill" className="size-4" />
             </button>
         </div>
     )

@@ -111,18 +111,18 @@ export default function TransactionsTable() {
 
   return (
     <section className="rounded-[18px] bg-white p-3  sm:p-4">
-      <div className="mb-4 mt-2 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-4 mt-2 flex gap-3 lg:items-center justify-between">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <Search onChange={(e) => setSearch(e.target.value)} value={search} />
         </div>
-        <div className="flex gap-6">
+        <div className="flex lg:gap-6 gap-4">
           <SortBy onClick={handleSortChagne} currSort={toTitleCase(sort)} />
           <Categories onClick={handleCategoryChagne} currCategory={toTitleCase(category)} />
         </div>
       </div>
 
       <div className="overflow-hidden py-4 border-b border-[#d6d0cb]">
-        <div className="grid grid-cols-[1.8fr_0.9fr_0.8fr_0.6fr] items-center border-b border-[#d6d0cb] px-3 py-3 text-xs font-semibold uppercase tracking-[0.04em] text-[#6c6c6c] sm:px-4">
+        <div className="grid-cols-[1.8fr_0.9fr_0.8fr_0.6fr] items-center border-b border-[#d6d0cb] px-3 py-3 text-xs font-semibold uppercase tracking-[0.04em] text-[#6c6c6c] sm:px-4 md:grid hidden">
           <span>Recipient / Sender</span>
           <span>Category</span>
           <span>Date</span>
