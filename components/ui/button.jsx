@@ -7,13 +7,13 @@ const variants = {
     destroy: "bg-red text-white hover:bg-red/80 focus:bg-red/80 p-4 rounded-[8px] font-semibold",
 }
 
-export default function Button({ variant, text, onClick, className, type, leftIcon }) {
+export default function Button({ variant, text, onClick, className, type, leftIcon, ...props }) {
 
     const LeftIcon = leftIcon;
 
 
     return (
-        <button className={`${variants[variant]} ${className} transform-all duration-150 ${leftIcon ? "flex items-center gap-2" : ""}`} onClick={onClick} type={type}>
+        <button className={`${variants[variant]} ${className} transform-all duration-150 ${leftIcon ? "flex items-center gap-2" : ""}`} onClick={onClick} type={type} {...props} >
             {leftIcon && (
                 <div><LeftIcon weight="bold" /></div>
             )}

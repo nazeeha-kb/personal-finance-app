@@ -62,7 +62,7 @@ export default function SortBy({ onClick, currSort }) {
                     </span>
                 </button>
             </div>
-            <article className={`flex flex-col absolute bg-white shadow-2xl rounded-lg w-40 h-60 overflow-auto scrollbar-thin overflow-x-hidden sm:translate-x-20 -translate-x-14 px-4 mt-2 scrollbar-hide transition-opacity duration-500
+            <article className={`flex flex-col absolute bg-white shadow-2xl rounded-lg w-40 h-60 overflow-auto scrollbar-thin overflow-x-hidden md:translate-x-20 sm:translate-x-10 -translate-x-10 px-4 mt-2 scrollbar-hide transition-opacity duration-500
                 ${dropDownOpen ? "opacity-100 z-10" : "opacity-0 -z-10"}
                 `} aria-hidden={!dropDownOpen}>
                 {sortTypes.map((sort, index) => (
