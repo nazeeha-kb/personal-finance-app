@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Input from "@/components/ui/Input";
-import Button from "@/components/ui/Button";
+import Button from "../../ui/Button"
 import Link from "next/link";
 import { useSignUp, useClerk } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";

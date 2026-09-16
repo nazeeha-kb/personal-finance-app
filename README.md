@@ -1,148 +1,194 @@
-# Frontend Mentor - Personal finance app
+# Personal Finance App
 
-![Design preview for the Personal finance app coding challenge](./preview.jpg)
+A personal finance dashboard built with Next.js, Clerk authentication, Prisma, and PostgreSQL. The app helps users track spending, manage budgets, monitor savings pots, and review recurring bills in a clean, responsive interface.
 
-## Welcome! 👋
+## Overview
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
+This project is based on the Frontend Mentor Personal Finance App challenge and extends it into a full-stack application with authentication and persistent data storage.
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
+It includes:
 
-**To do this challenge, you need a very strong understanding of HTML, CSS, and JavaScript.**
+- Overview dashboard summarizing financial activity
+- Transaction management with search, sort, and filtering
+- Budget creation and tracking
+- Savings pots with add/withdraw flows
+- Recurring bill tracking
+- Responsive, keyboard-friendly UI
+- User authentication via Clerk
+- Persistent data layer using Prisma + PostgreSQL
 
-## The challenge
+## Tech Stack
 
-Your challenge is to build out this personal finance app and get it looking as close to the design as possible.
+- [Next.js](https://nextjs.org/) - App framework
+- [React](https://react.dev/) - UI library
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Prisma](https://www.prisma.io/) - Database ORM
+- [PostgreSQL](https://www.postgresql.org/) - Database
+- [Clerk](https://clerk.com/) - Authentication
+- [Radix UI](https://www.radix-ui.com/) - Accessible primitives
+- [Zustand](https://zustand-demo.pmnd.rs/) - State management
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+## Features
 
-We provide the data in a local `data.json` file, so use that to populate the content on first load. If you want to take it up a notch, feel free to build this as a full-stack application!
+### Dashboard / Overview
+- High-level financial overview
+- Quick access to key sections
+- Navigation across app features
 
-Your users should be able to:
+### Transactions
+- View transaction list with pagination
+- Search by name
+- Sort by date, amount, and alphabetic fields
+- Filter by category
 
-- See all of the personal finance app data at-a-glance on the overview page
-- View all transactions on the transactions page with pagination for every ten transactions
-- Search, sort, and filter transactions
-- Create, read, update, delete (CRUD) budgets and saving pots
-- View the latest three transactions for each budget category created
-- View progress towards each pot
-- Add money to and withdraw money from pots
-- View recurring bills and the status of each for the current month
-- Search and sort recurring bills
-- Receive validation messages if required form fields aren't completed
-- Navigate the whole app and perform all actions using only their keyboard
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
-- **Bonus**: Save details to a database (build the project as a full-stack app)
-- **Bonus**: Create an account and log in (add user authentication to the full-stack app)
+### Budgets
+- Create, update, and remove budgets
+- Track spending against category limits
+- Review recent category activity
+- See totals and category-specific usage
 
-### Want some support on the challenge?
+### Saving Pots
+- Create savings goals
+- Add funds to a pot
+- Withdraw funds from a pot
+- Delete pots and return balances appropriately
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Recurring Bills
+- Review bills by vendor
+- Display paid vs upcoming monthly payments
+- Search and sort recurring expenses
 
-### Expected behaviour
+### Authentication
+- Sign in / sign up flows using Clerk
+- Protected dashboard routes
+- User-specific persistence for budgets and pots
 
-**⚠️ IMPORTANT ⚠️: The data in some designs will differ from what's in the `data.json` file. We recommend using the desktop designs to reference how the data should look, as these all include the correct data and copy. The tablet and mobile layouts are there for layout reference.**
+### UX
+- Responsive layout for mobile, tablet, and desktop
+- Hover, focus, and keyboard-friendly interaction states
+- Clean analytics-style UI
 
-- Overview
-  - This page should display all the information at-a-glance and allow for easy navigation.
-  - We recommend building this page last, as it will require logic from the other pages (e.g., recurring bills) in order to display the data correctly.
-- Transactions
-  - Output the transactions from the `data.json` file, paginating results for every ten transactions.
-  - The search should allow for name search, but feel free to add other functionality like searching for transaction amounts if you want to test yourself.
-  - The sorting options include: Latest (most recent), Oldest, A to Z, Z to A, Highest (transaction amount), Lowest.
-  - The filter is by transaction category, which are: Entertainment, Bills, Groceries, Dining Out, Transportation, Personal Care, Education, Lifestyle, Shopping, General. Filtering by category should only show transactions from the selected category.
-- Budgets
-  - Don't worry if you can't create a donut pie chart exactly like in the design. Do your best to get close, but feel free to go in your own direction.
-  - The "Spent" amount should calculate the money spent within the category for the current month (August 2024 in the app).
-  - The "Latest Spending" component should display the three last transactions for that category regardless of the month.
-  - Clicking "See All" on a budget should navigate to the Transactions page with the filter set to the relevant category. For example, clicking "See All" on Entertainment should only show transactions with the Entertainment category.
-  - Adding a new budget should automatically pull in the three latest transactions from the created budget category and calculate the amount spent so far for August 2024.
-  - Deleting a budget should remove it from the Budgets page and the Overview.
-- Pots
-  - Adding money to a pot should deduct the given amount from the current balance (seen on the Overview page).
-  - Withdrawing money from a pot should add that amount to the current balance.
-  - Deleting a pot should return all the money from the pot to the current balance.
-- Recurring Bills
-  - List out all the recurring transactions and ensure only one item is shown per vendor.
-  - Show the recurring transactions that have already been paid for August 2024.
-  - Show the payments due to be paid soon based on their monthly payment date. Calculate this from recurring transactions yet to be paid for August 2024, but due within five days of the latest overall transaction in the app (Emma Richardson - 19 August 2024).
-  - The search should search based on name.
-  - The sorting options include: Latest (earliest in the month), Oldest, A to Z, Z to A, Highest (transaction amount), Lowest.
+## Project Structure
 
-## Where to find everything
+```bash
+.
+├── app/
+│   ├── (auth)/
+│   ├── (dashboard)/
+│   ├── globals.css
+│   ├── layout.js
+│   └── page.js
+├── components/
+│   ├── forms/
+│   ├── layout/
+│   ├── transactions/
+│   └── ui/
+├── lib/
+│   ├── generated/
+│   ├── prisma.js
+│   ├── budgets.js
+│   ├── pots.js
+│   ├── users.js
+│   └── utils.js
+├── prisma/
+│   ├── schema.prisma
+│   └── migrations/
+├── public/
+├── data/
+│   └── data.json
+├── .env
+├── components.json
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.mjs
+├── package.json
+├── postcss.config.mjs
+├── prisma.config.ts
+├── README.md
+└── README-template.md
+```
 
-Your task is to build out the project to the design file provided. You can download the Figma design file on the platform. You can download the design file on the platform. **Please be sure not to share them with anyone else.** The design download comes with a `README.md` file as well to help you get set up.
+## Getting Started
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized. Some are reusable at multiple screen sizes. So if you don't see an image in a specific folder, it will typically be in another folder for that page.
+### Prerequisites
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+- Node.js 18+
+- npm
+- PostgreSQL database
+- Clerk account
 
-The design system in the design file will give you more information about the various colors, fonts, and styles used in this project. Our fonts always come from [Google Fonts](https://fonts.google.com/).
+### Installation
 
-## Using AI coding assistants
+1. Clone the repository:
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+```bash
+git clone <repository-url>
+cd personal-finance-app
+```
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+2. Install dependencies:
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+```bash
+npm install
+```
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+3. Set up environment variables.
 
-## Building your project
+Create a `.env.local` file in the project root and add:
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/overview
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/overview
+DATABASE_URL=your_postgresql_connection_string
+```
 
-1. Separate the `starter-code` from the rest of this project and rename it to something meaningful for you. Initialize the codebase as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/). **⚠️ IMPORTANT ⚠️: There are already a couple of `.gitignore` files in this project. Please do not remove them or change the content of the files. If you create a brand new project, please use the `.gitignore` files provided in your new codebase. This is to avoid the accidental upload of the design files to GitHub. With these premium challenges, please be sure not to share the design files in your GitHub repo. Thanks!**
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+4. Generate Prisma client:
 
-## Deploying your project
+```bash
+npx prisma generate
+```
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+5. Run the app:
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+```bash
+npm run dev
+```
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+The app will be available at `http://localhost:3000`.
 
-## Create a custom `README.md`
+## Available Scripts
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+```bash
+npm run dev      # start the Next.js development server
+npm run build    # generate Prisma client and create production build
+npm run start    # run the production build
+npm run lint     # run ESLint
+```
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+## Database
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+This app uses Prisma with PostgreSQL. The database model currently supports:
 
-## Submitting your solution
+- `User`
+- `Budget`
+- `Pot`
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+The schema is defined in `prisma/schema.prisma`.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+## Notes
 
-**⚠️ IMPORTANT ⚠️: With these premium challenges, please be sure not to upload the design files to GitHub when you're submitting to the platform and sharing it around. If you've created a brand new project, the easiest way to do that is to copy across the `.gitignore` provided in this starter project.**
+- The project is designed to work with Clerk authentication and a connected PostgreSQL database.
+- The app uses the challenge data as the foundation for its interactive finance experience.
+- Some parts of the UI and data logic are still evolving, and the codebase is structured to support further feature expansion.
 
-## Sharing your solution
+## License
 
-There are multiple places you can share your solution:
+This project is for learning and portfolio purposes. Please review the Frontend Mentor challenge terms for usage constraints related to the design and assets.
 
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community). 
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+## Challenge Context
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-**Have fun building!** 🚀
+This repository was built to complete the Frontend Mentor challenge for a personal finance app, with a full-stack implementation layered on top of the original UI specification.
