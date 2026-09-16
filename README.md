@@ -2,6 +2,10 @@
 
 A personal finance dashboard built with Next.js, Clerk authentication, Prisma, and PostgreSQL. The app helps users track spending, manage budgets, monitor savings pots, and review recurring bills in a clean, responsive interface.
 
+
+## Live Link
+Try the App: https://moneyboard-app.vercel.app/
+
 ## Overview
 
 This project is based on the Frontend Mentor Personal Finance App challenge and extends it into a full-stack application with authentication and persistent data storage.
