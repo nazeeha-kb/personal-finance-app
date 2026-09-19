@@ -2,7 +2,7 @@
 
 import Input from "@/components/ui/Input"
 import { EyeIcon } from "@phosphor-icons/react"
-import Button from "@/components/ui/button"
+import Button from "@/components/ui/Button"
 import Link from "next/link"
 import { useState } from "react"
 

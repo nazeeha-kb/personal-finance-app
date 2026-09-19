@@ -4,7 +4,7 @@ import Image from "next/image"
 import { DotsThreeIcon, PlusIcon } from "@phosphor-icons/react/dist/ssr"
 
 import budgetData from "@/data/data.json"
-import Button from "@/components/ui/button"
+import Button from "@/components/ui/Button"
 import PageHeader from "@/components/ui/PageHeader"
 import { formatCurrency, formatDate, getAvatarSrc } from "@/lib/utils/formatters"
 

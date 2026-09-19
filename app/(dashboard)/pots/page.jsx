@@ -1,7 +1,7 @@
 "use client"
 
 import PageHeader from "@/components/ui/PageHeader"
-import Button from "@/components/ui/button"
+import Button from "@/components/ui/Button"
 import { PlusIcon } from "@phosphor-icons/react"
 
 export default function PotsPage() {
