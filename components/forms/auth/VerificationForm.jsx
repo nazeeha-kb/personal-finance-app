@@ -25,22 +25,28 @@ export default function VerificationForm({ error }) {
         if (isLoading) return
 
         try {
-            signUp.verifications.verifyEmailCode({
-                code
-            })
+            const { error } = await signUp.verifications.verifyEmailCode({
+                code,
+            });
+
+            if (error) {
+                console.log("VERIFY ERROR");
+                console.log(error);
+                return;
+            }
 
             if (signUp.status === "complete") {
                 await setActive({
-                    session: signUp.createdSessionId
-                })
+                    session: signUp.createdSessionId,
+                });
 
-                router.push("/overview")
-                console.log("Pushed to /overview")
+                router.push("/overview");
+                console.log("pushed to overview")
             }
 
-        } catch (err) {
-            console.log("VERIFY ERROR")
-            console.log(err)
+        } catch (error) {
+            console.log(JSON.stringify(error, null, 2))
+            setError({ formError: error.errors[0].message });
         } finally {
             setIsLoading(false)
         }

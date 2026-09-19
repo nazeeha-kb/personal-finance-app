@@ -3,7 +3,7 @@
 import Input from "@/components/ui/Input"
 import Button from "@/components/ui/Button"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import VerificationForm from "./VerificationForm"
 // From Clerk
@@ -23,12 +23,19 @@ export default function SignUpForm() {
     const [pendingVerification, setPendingVerification] = useState(false)
     const [showPassword, setShowPassword] = useState("")
 
-    const { signUp } = useSignUp();
+    const { signUp, errors, fetchStatus } = useSignUp();
 
     if (!signUp) {
         // loader if present
         return (<div>Loading</div>);
     }
+
+    useEffect(() => {
+        if (errors) {
+            console.log(JSON.stringify(errors, null, 2));
+        }
+    }, [errors]);
+
 
 
     // Submitting form.
@@ -107,7 +114,6 @@ export default function SignUpForm() {
             return "Password format is invalid"
         }
     }
-
 
 
     return (
